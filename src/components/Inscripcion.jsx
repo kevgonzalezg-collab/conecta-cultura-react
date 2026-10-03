@@ -1,25 +1,23 @@
-function Inscripcion({ actividad, onEliminar }) {
+function Inscripcion({ inscripcion, onEliminar }) {
   return (
     <article className="card h-100">
       <div className="card-body">
-        <h2 className="h5">{actividad.nombre}</h2>
+        <h2 className="h5">{inscripcion.nombre}</h2>
+        <p>{inscripcion.categoria}</p>
 
-        {/* Mensaje de Últimos Cupos */}
-        {actividad.cupos > 0 && actividad.cupos <= 5 && (
-          <p className="text-danger fw-bold">¡Últimos cupos!</p>
+        {inscripcion.precio <= 0 && (
+          <p className="text-success fw-bold">¡Gratis!</p>
         )}
 
-        {/* Mensaje de Cupo Gratis */}
-        {actividad.precio === 0 && (
-          <p className="text-success fw-bold">¡Cupo Gratis!</p>
+        {inscripcion.precio > 0 && (
+          <p>${inscripcion.precio}</p>
         )}
 
-        {/* Botón para Eliminar la Inscripción */}
         <button
-          className="btn btn-danger"
-          onClick={() => onEliminar(actividad.id)}
+          className="btn btn-primary"
+          onClick={() => onEliminar(inscripcion.id)}
         >
-          Eliminar inscripción
+          Eliminar
         </button>
       </div>
     </article>
